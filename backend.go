@@ -82,7 +82,9 @@ func (b *Backend) ListTrenches(project string) ([]string, error) {
 	for _, f := range files {
 		if f.IsDir() {
 			fmt.Println(f.Name())
-			a = append(a, f.Name())
+			if f.Name() != "objects" && f.Name() != "refs" {
+				a = append(a, f.Name())
+			}
 		}
 	}
 	return a, nil
